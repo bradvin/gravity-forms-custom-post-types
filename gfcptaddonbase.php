@@ -31,7 +31,7 @@ if (!class_exists('GFCPTAddonBase')) {
             add_filter("gform_post_data", array(&$this, 'set_post_values'), 10, 2);
 
             //intercept the form save and save any taxonomy links if needed
-            add_action('gform_post_submission', array(&$this, 'save_taxonomies'), 10, 2);
+            add_action('gform_after_submission', array(&$this, 'save_taxonomies'), 10, 2);
 
             //enqueue scripts to the page
             add_action('gform_enqueue_scripts', array(&$this, 'enqueue_custom_scripts'), 10, 2);
