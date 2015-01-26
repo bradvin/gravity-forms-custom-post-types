@@ -15,7 +15,7 @@ Easily map your forms that create posts to a custom post type. Also map dropdown
 
 Gravity forms allows you to create posts from a form using 'post fields'. By default the submitted form will create a post, but I wanted a way to save a custom post type instead. It can be done quite easily with some php code, but I wanted it to be easier without any code at all. Now it is easy. Maybe too easy :)
 
-You can also link a custom taxomony to the field types : Drop Downs, Mulit Selects, Radio Buttons, Checkboxes and Single Line Text. So when the form is displayed a list of terms for the custom taxonomy are listed. And then when the post (or custom post type) is created, it automatically links the post to the selected taxonomy term(s).
+You can also link a custom taxonomy to the field types : Drop Downs, Multi Selects, Radio Buttons, Checkboxes and Single Line Text. So when the form is displayed a list of terms for the custom taxonomy are listed. And then when the post (or custom post type) is created, it automatically links the post to the selected taxonomy term(s).
 
 **features**
 
@@ -26,7 +26,7 @@ You can also link a custom taxomony to the field types : Drop Downs, Mulit Selec
 *   Hierarchical dropdowns for hierarchical taxonomies (see screenshots)
 *   Populate a dropdown with posts
 *   Ability to set a parent post using the dropdown control
-*   Single line text field can link to taxonomies by entering a comma seperated list
+*   Single line text field can link to taxonomies by entering a comma separated list
 *   Enhanced UI on single line text fields to show a "tag input" styled control (see screenshots)
 
 **How to map a form to a custom post type**
@@ -35,11 +35,11 @@ Add a post title field to your form and under the advanced tab, tick the "Save A
 
 **How to link a field to a custom taxonomy**
 
-Custom taxonomies can be linked to Drop Downs, Mulit Selects, Radio Buttons and Checkboxes. Under the advanced tab for your field, tick the "Populate with a Taxonomy" checkbox. A dropdown will appear and you can select your custom taxonomy from the list. 
+Custom taxonomies can be linked to Drop Downs, Multi Selects, Radio Buttons and Checkboxes. Under the advanced tab for your field, tick the "Populate with a Taxonomy" checkbox. A dropdown will appear and you can select your custom taxonomy from the list. 
 
 **How to link the saved post to taxonomies using a single line text field**
 
-You can also link a Single Line Text field to a taxonomy, so it can be used to input existing and new taxonomy terms. Under the Advanced tab, click "Save to Taxonomy" checkbox and then select the taxonomy from thr drop down. You can also choose to show an advanced UI by checking the "Enable enhanced UI" checkbox. This will enable an awesome "tag input" style control. See screenshot for more info. If the control contains exising terms, then they are linked to the saved post. If there are new terms in the control, then the terms are created and they are also linked.
+You can also link a Single Line Text field to a taxonomy, so it can be used to input existing and new taxonomy terms. Under the Advanced tab, click "Save to Taxonomy" checkbox and then select the taxonomy from the drop down. You can also choose to show an advanced UI by checking the "Enable enhanced UI" checkbox. This will enable an awesome "tag input" style control. See screenshot for more info. If the control contains existing terms, then they are linked to the saved post. If there are new terms in the control, then the terms are created and they are also linked.
 
 **How to set a parent post with the dropdown field**
 
@@ -87,7 +87,7 @@ You can now link the dropdown field to a post type and try to make it set the pa
 * To keep in line with the GF standards, mapping a form to a CPT in GF v1.4.5 can now be done via the 'post title' field
 
 = 1.0 =
-* Initial Relase. First version.
+* Initial Release. First version.
 
 == Frequently Asked Questions ==
 
