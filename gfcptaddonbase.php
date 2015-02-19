@@ -304,7 +304,7 @@ if (!class_exists('GFCPTAddonBase')) {
             //now check if we are dealing with a checkbox list and do some extra magic
             if ( $field['type'] == 'checkbox' ) {
                 //clear the inputs first
-                $field['inputs'] = array();
+                $inputs = array();
 
                 $counter = 0;
                 //recreate the inputs so they are captured correctly on form submission
@@ -312,8 +312,10 @@ if (!class_exists('GFCPTAddonBase')) {
                     $counter++;
                     if ( ($counter % 10) == 0 ) $counter++; //thanks to Peter Schuster for the help on this fix
                     $id = floatval( $field['id'] . '.' . $counter );
-                    $field['inputs'][] = array('label' => $choice['text'], 'id' => $id);
+                    $inputs[] = array('label' => $choice['text'], 'id' => $id);
                 }
+
+                $field['inputs'] = $inputs;
             }
         }
 
