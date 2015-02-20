@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms + Custom Post Types
 Plugin URI: http://themergency.com/plugins/gravity-forms-custom-post-types/
 Description: Allows a simple way to map a Gravity Form post entry to a custom post type. Also include custom taxonomies.
-Version: 3.0.1
+Version: 3.0.2
 Author: Brad Vincent
 Author URI: http://themergency.com/
 License: GPL2

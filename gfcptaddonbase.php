@@ -245,8 +245,8 @@ if (!class_exists('GFCPTAddonBase')) {
          * setup a field if it is linked to a post type
          */
         function setup_post_type_field( &$field, $post_type ) {
-            $first_choice = $field['choices'][0]['text'];
-            $field['choices'] = $this->load_post_type_choices( $post_type, $first_choice );
+            $first_choice = $field->choices[0]['text'];
+            $field->choices = $this->load_post_type_choices( $post_type, $first_choice );
         }
 
         function load_post_type_choices($post_type, $first_choice = '') {
@@ -298,8 +298,8 @@ if (!class_exists('GFCPTAddonBase')) {
          * setup a field if it is linked to a taxonomy
          */
         function setup_taxonomy_field( &$field, $taxonomy ) {
-            $first_choice = $field['choices'][0]['text'];
-            $field['choices'] = $this->load_taxonomy_choices( $taxonomy, $field['type'], $first_choice );
+            $first_choice = $field->choices[0]['text'];
+            $field->choices = $this->load_taxonomy_choices( $taxonomy, $field['type'], $first_choice );
 
             //now check if we are dealing with a checkbox list and do some extra magic
             if ( $field['type'] == 'checkbox' ) {
@@ -308,14 +308,14 @@ if (!class_exists('GFCPTAddonBase')) {
 
                 $counter = 0;
                 //recreate the inputs so they are captured correctly on form submission
-                foreach( $field['choices'] as $choice ) {
+                foreach( $field->choices as $choice ) {
                     $counter++;
                     if ( ($counter % 10) == 0 ) $counter++; //thanks to Peter Schuster for the help on this fix
                     $id = floatval( $field['id'] . '.' . $counter );
                     $inputs[] = array('label' => $choice['text'], 'id' => $id);
                 }
 
-                $field['inputs'] = $inputs;
+                $field->inputs = $inputs;
             }
         }
 
@@ -404,7 +404,7 @@ if (!class_exists('GFCPTAddonBase')) {
         function save_taxonomy_field( &$field, $entry, $taxonomy ) {
             if ( array_key_exists( 'type', $field ) && $field['type'] == 'checkbox' ) {
                 $term_ids = array();
-                foreach ( $field['inputs'] as $input ) {
+                foreach ( $field->inputs as $input ) {
                     $term_id = (int) $entry[ (string) $input['id'] ];
                     if ( $term_id > 0 )
                         $term_ids[] = $term_id;

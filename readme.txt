@@ -3,7 +3,7 @@ Contributors: bradvin
 Donate link: http://themergency.com/donate/
 Tags: form,forms,gravity,gravity form,gravity forms,CPT,custom post types,custom post type,taxonomy,taxonomies
 Requires at least: 3.0.1
-Tested up to: 3.3.1
+Tested up to: 4.1.1
 Stable tag: 3.0.1
 
 Easily map your forms that create posts to a custom post type. Also map dropdown select, radio buttons list and checkboxes lists to a custom taxonomy.
