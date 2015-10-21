@@ -118,7 +118,7 @@ class GFCPTAddon {
     /*
      * Returns the physical path of the plugin's root folder
      */
-    protected static function get_base_path(){
+    public static function get_base_path(){
         $folder = basename(dirname(__FILE__));
         return WP_PLUGIN_DIR . '/' . $folder;
     }
