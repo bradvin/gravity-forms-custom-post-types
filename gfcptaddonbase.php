@@ -45,7 +45,10 @@ if (!class_exists('GFCPTAddonBase')) {
          * Setup the form with any taxonomies etc
          */
         function setup_form( $form ) {
-        
+
+          if( empty( $form['fields'] ) )
+            return $form;
+
           //loop thru all fields
           foreach($form['fields'] as &$field) {
 
