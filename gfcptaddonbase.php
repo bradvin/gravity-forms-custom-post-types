@@ -298,8 +298,13 @@ if (!class_exists('GFCPTAddonBase')) {
          * setup a field if it is linked to a taxonomy
          */
         function setup_taxonomy_field( &$field, $taxonomy ) {
+
             $first_choice = $field['choices'][0]['text'];
-            $field['choices'] = $this->load_taxonomy_choices( $taxonomy, $field['type'], $first_choice );
+
+            // Determine if there is a default
+            $defaultField = $this->determineIsSelected( $field );
+
+            $field['choices'] = $this->load_taxonomy_choices( $taxonomy, $field['type'], $first_choice, $defaultField );
 
             //now check if we are dealing with a checkbox list and do some extra magic
             if ( $field['type'] == 'checkbox' ) {
@@ -322,7 +327,7 @@ if (!class_exists('GFCPTAddonBase')) {
         /*
          * Load any taxonomy terms
          */
-        function load_taxonomy_choices($taxonomy, $type, $first_choice = '') {
+        function load_taxonomy_choices( $taxonomy, $type, $first_choice = '', $default = false ) {
             $choices = array();
 
             if ($type === 'select') {
@@ -343,7 +348,10 @@ if (!class_exists('GFCPTAddonBase')) {
                   $choices[] = array('value' => $term->term_id, 'text' => $term->name);
               }
             }
-
+            
+            if( $default ){
+              $choices[$default]['isSelected'] = 1;
+            }
             return $choices;
         }
 
@@ -365,6 +373,40 @@ if (!class_exists('GFCPTAddonBase')) {
             else
               return $this->walk_terms( $terms );
         }
+
+        /**
+         * Deterine if there is a default value for a particular set of field choices. If there is return the array key
+         *
+         * @since 0.1
+         *
+         * @param array $field All the data associated with this field
+         * @return false|int The array key of the default choice or false if no default set
+         */
+
+        public function determineIsSelected( $field ) {
+
+          if ( !$field || !is_array( $field ) || !array_key_exists( 'choices', $field ) ) {
+            return false;
+          }
+
+          $default = false;
+
+          if ( !is_array( $field['choices'] ) ){
+            return $default;
+          }
+
+          foreach ( $field['choices'] as $key => $choiceArray ) {
+            
+            if ( isset( $choiceArray['isSelected'] ) && $choiceArray['isSelected'] == 1 ) {
+              $default = $key;
+              break;
+            }
+
+          }
+
+          return $default;
+
+        }/* determineIsSelected() */
 
         /*
          * Helper function to recursively 'walk' the taxonomy terms
