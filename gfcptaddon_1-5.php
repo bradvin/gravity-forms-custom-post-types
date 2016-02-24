@@ -121,7 +121,7 @@ if (!class_exists('GFCPTAddon1_5')) {
                       $args=array(
                         'public'        => true
                       );
-                      $post_types = get_post_types($args, 'objects');
+                      $post_types = get_post_types( apply_filters( 'gf-cpt-post-types-args', $args ), 'objects');
                       foreach($post_types as $post_type): ?>
                           <option value="<?php echo $post_type->name; ?>"><?php echo $post_type->label; ?></option>
                       <?php endforeach; ?>
@@ -145,7 +145,7 @@ if (!class_exists('GFCPTAddon1_5')) {
                     $args=array(
                       'public'   => true
                     );
-                    $post_types = get_post_types($args, 'objects');
+                    $post_types = get_post_types( apply_filters( 'gf-cpt-post-types-args', $args ), 'objects');
                     foreach($post_types as $post_type): ?>
                         <option value="<?php echo $post_type->name; ?>"><?php echo $post_type->label; ?></option>
                     <?php endforeach; ?>
