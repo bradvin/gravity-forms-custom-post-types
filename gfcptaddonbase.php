@@ -340,7 +340,7 @@ if (!class_exists('GFCPTAddonBase')) {
 
             if ( !array_key_exists("errors",$terms) ) {
               foreach($terms as $term) {
-                  $choices[] = array('value' => $term->term_id, 'text' => $term->name);
+                  $choices[] = array('value' => $term->term_id, 'text' => apply_filters('gfcp_taxonomy_text', $term->name, $term));
               }
             }
 
@@ -372,7 +372,7 @@ if (!class_exists('GFCPTAddonBase')) {
         function walk_terms( $input_array, $parent_id=0, &$out_array=array(), $level=0 ){
             foreach ( $input_array as $item ) {
                 if ( $item->parent == $parent_id ) {
-                        $item->name = str_repeat('--', $level) . $item->name;
+                        $item->name = str_repeat('--', $level) . apply_filters('gfcp_taxonomy_text', $item->name, $item);
                         $out_array[] = $item;
                         $this->walk_terms( $input_array, $item->term_id, $out_array, $level+1 );
                 }
